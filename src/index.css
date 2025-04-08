@@ -1,7 +1,7 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 600;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -41,11 +41,14 @@ h1 {
 }
 
 input {
+  display: block;
+  margin: 0px auto;
   background-color: white; /* встановлюємо білий фон */
   color: black; /* встановлюємо чорний колір тексту */
   border: 1px solid #ccc; /* стандартний бордер */
   padding: 8px;
   font-size: 16px;
+  width: 300px;
 }
 
 button {
