@@ -1,0 +1,18 @@
+.authNav {
+  display: flex;
+  gap: 12px;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.active {
+  text-decoration: underline;
+}
