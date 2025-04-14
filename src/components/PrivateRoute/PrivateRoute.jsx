@@ -13,6 +13,5 @@ export default function PrivateRoute({
   const isRefreshing = useSelector(selectIsRefreshing);
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-  // return isLoggedIn ? Component : <Navigate to={redirectTo} />;
   return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
 }

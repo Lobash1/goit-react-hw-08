@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./operations";
-import { createSelector } from "reselect";
+import { logOut } from "../auth/operations";
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -11,12 +11,12 @@ const contactsSlice = createSlice({
   },
   reducers: {
     resetContacts: (state) => {
-      state.items = []; // очищаємо список контактів
+      state.items = [];
     },
   },
   extraReducers: (builder) => {
     builder
-      // Fetch contacts
+      // Fetch
       .addCase(fetchContacts.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -30,7 +30,7 @@ const contactsSlice = createSlice({
         state.error = action.payload;
       })
 
-      // Add contact
+      // Add
       .addCase(addContact.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -44,7 +44,7 @@ const contactsSlice = createSlice({
         state.error = action.payload;
       })
 
-      // Delete contact
+      // Delete
       .addCase(deleteContact.pending, (state) => {
         state.loading = true;
       })
@@ -57,25 +57,16 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+
+      // LogOut
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+        state.loading = false;
+        state.error = null;
       });
   },
 });
+
 export const { resetContacts } = contactsSlice.actions;
-export const selectContacts = (state) => state.contacts.items;
-export const selectError = (state) => state.contacts.error;
-export const selectLoading = (state) => state.contacts.loading;
-
-// Мемоізований селектор для фільтрації контактів
-export const selectFilteredContacts = createSelector(
-  [(state) => state.contacts.items, (state) => state.filters.name], // залежності
-  (contacts, filter) => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
-
-// Експортуємо асинхронні дії окремо
-export { addContact, deleteContact };
-
 export default contactsSlice.reducer;

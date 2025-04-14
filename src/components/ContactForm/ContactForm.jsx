@@ -3,7 +3,7 @@ import css from "./ContactForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
-import { selectContacts } from "../../redux/contacts/slice";
+// import { selectContacts } from "../../redux/contacts/slice";
 import iziToast from "izitoast";
 
 const FeedbackSchema = Yup.object().shape({
@@ -26,7 +26,7 @@ const initialValues = {
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector((state) => state.contacts.items);
 
   const handleSubmit = async (values, actions) => {
     const isDuplicate = contacts.some(
