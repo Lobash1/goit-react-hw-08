@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://678bef651a6b89b27a2be868.mockapi.io";
+// axios.defaults.baseURL = "https://678bef651a6b89b27a2be868.mockapi.io";
 
 axios.defaults.baseURL = "https://connections-api.goit.global";
 
