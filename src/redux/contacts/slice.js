@@ -9,7 +9,11 @@ const contactsSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetContacts: (state) => {
+      state.items = []; // очищаємо список контактів
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Fetch contacts
@@ -56,7 +60,7 @@ const contactsSlice = createSlice({
       });
   },
 });
-
+export const { resetContacts } = contactsSlice.actions;
 export const selectContacts = (state) => state.contacts.items;
 export const selectError = (state) => state.contacts.error;
 export const selectLoading = (state) => state.contacts.loading;

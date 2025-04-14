@@ -1,13 +1,13 @@
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps";
+import { deleteContact } from "../../redux/contacts/operations";
 import {
   selectContacts,
   selectLoading,
   selectError,
-} from "../../redux/contactsSlice";
-import { selectNameFilter } from "../../redux/filtersSlice";
+} from "../../redux/contacts/selectors";
+import { selectNameFilter } from "../../redux/filters/slice";
 import iziToast from "izitoast";
 
 export default function ContactList() {
